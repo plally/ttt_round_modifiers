@@ -23,7 +23,6 @@ function MODIFIER:Prepare()
             newEnt:SetAngles(ent:GetAngles())
             ent:Remove()
             newEnt:Spawn()
-            replaceEntity(ent, )
         elseif ent:IsWeapon() and not allowedWeapons[ent:GetClass()] then
             ent:Remove()
         elseif ent.Base == "base_ammo_ttt" then
