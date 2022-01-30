@@ -3,7 +3,7 @@ local allowedWeapons = {
     weapon_ttt_unarmed = true,
 }
 
-function modifier:Setup()
+function MODIFIER:Setup()
     hook.Add("ScalePlayerDamage", "CFC_TTTSpecialRounds_HeadshotOnly", function( ply, hitgroup, dmginfo )
         if hitgroup ~= HITGROUP_HEAD then
             dmginfo:ScaleDamage( 0 )
