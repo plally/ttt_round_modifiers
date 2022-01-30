@@ -26,3 +26,6 @@ for _, dir in ipairs(directories or {}) do
     RoundModifiers.modifiers[name] = MODIFIER
     MODIFIER = nil
 end
+
+include("cfc_ttt_round_modifiers/interface.lua")
+include("cfc_ttt_round_modifiers/orchestration.lua")

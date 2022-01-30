@@ -3,13 +3,24 @@ local allowedWeapons = {
     weapon_ttt_unarmed = true,
 }
 
-function MODIFIER:Prepare()
+function modifier:Setup()
     hook.Add("ScalePlayerDamage", "CFC_TTTSpecialRounds_HeadshotOnly", function( ply, hitgroup, dmginfo )
         if hitgroup ~= HITGROUP_HEAD then
             dmginfo:ScaleDamage( 0 )
         end
     end)
+end
 
+function MODIFIER:Prepare()
+    timer.Simple(0, function()
+        self:replaceWeapons()
+    end)
+end
+
+function MODIFIER:End()
+end
+
+function MODIFIER:replaceWeapons()
     for _, ent in pairs(ents.GetAll()) do
         if ent:IsWeapon() and not IsValid(ent:GetOwner()) then
             local newEnt = ents.Create("weapon_zm_revolver")
@@ -27,9 +38,8 @@ function MODIFIER:Prepare()
             newEnt:Spawn()
         end
     end
-
 end
 
-function MODIFIER:Cleanup()
+function MODIFIER:Teardown()
     hook.Remove("ScalePlayerDamage", "CFC_TTTSpecialRounds_HeadshotOnly")
 end
