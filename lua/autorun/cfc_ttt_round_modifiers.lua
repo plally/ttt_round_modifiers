@@ -1,9 +1,9 @@
 RoundModifiers = {}
 RoundModifiers.modifiers = {}
 
-local files, directories =  file.Find("modifiers/")
+local files, directories =  file.Find("modifiers/*", "LUA")
 
-for _, file in ipairs(files) do
+for _, file in ipairs(files or {}) do
     MODIFIER = {}
     include(file)
     AddCSLuaFile(file)
@@ -13,19 +13,21 @@ for _, file in ipairs(files) do
     end
 
     RoundModifiers.modifiers[name] = MODIFIER
+    MODIFIER = nil
 end
 
 -- TODO support for serverside and clientside files
-for _, dir in ipairs(dir) do
-    local sharedFile = dir .. "/" .. "init.lua" 
+for _, dir in ipairs(directories or {}) do
+    local sharedFile = dir .. "/" .. "sh_init.lua" 
 
     MODIFIER = {}
-    include(file)
-    AddCSLuaFile(file)
+    include(sharedFile)
+    AddCSLuaFile(sharedFile)
     local name = dir
     if MODIFIER.name then 
         name = MODIFIER.name 
     end
 
     RoundModifiers.modifiers[name] = MODIFIER
+    MODIFIER = nil
 end
