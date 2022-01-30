@@ -9,9 +9,6 @@ for _, f in ipairs(files or {}) do
     include(filename)
     AddCSLuaFile(filename)
     local name = string.sub(filename, 1, #filename - 4)
-    if MODIFIER.name then 
-        name = MODIFIER.name 
-    end
 
     RoundModifiers.modifiers[name] = MODIFIER
     MODIFIER = nil
@@ -25,9 +22,6 @@ for _, dir in ipairs(directories or {}) do
     include(sharedFile)
     AddCSLuaFile(sharedFile)
     local name = dir
-    if MODIFIER.name then 
-        name = MODIFIER.name 
-    end
 
     RoundModifiers.modifiers[name] = MODIFIER
     MODIFIER = nil
