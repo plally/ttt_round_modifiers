@@ -16,7 +16,7 @@ function RoundModifiers.DisableModifier(name)
     if not modifier then return false end
     if modifier.Teardown then modifier:Teardown() end
     
-    RoundModifiers.enabledModifiers[name] = true
+    RoundModifiers.enabledModifiers[name] = false
 
     return true
 end
