@@ -29,3 +29,5 @@ end
 
 include("cfc_ttt_round_modifiers/interface.lua")
 include("cfc_ttt_round_modifiers/orchestration.lua")
+include("cfc_ttt_round_modifiers/sv_ui.lua")
+include("cfc_ttt_round_modifiers/cl_ui.lua")
