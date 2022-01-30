@@ -3,13 +3,13 @@ local allowedWeapons = {
     weapon_ttt_unarmed = true,
 }
 
-ROUND.Name = ""
+MODIFIER.Name = ""
 
 local function replaceEntity(ent, newClass)
 
 end
 
-function ROUND:Prepare()
+function MODIFIER:Prepare()
     hook.Add("ScalePlayerDamage", "CFC_TTTSpecialRounds_HeadshotOnly", function( ply, hitgroup, dmginfo )
         if hitgroup ~= HITGROUP_HEAD then
             dmginfo:ScaleDamage( 0 )
@@ -37,6 +37,6 @@ function ROUND:Prepare()
 
 end
 
-function ROUND:End()
+function MODIFIER:End()
     hook.Remove("ScalePlayerDamage", "CFC_TTTSpecialRounds_HeadshotOnly")
 end
