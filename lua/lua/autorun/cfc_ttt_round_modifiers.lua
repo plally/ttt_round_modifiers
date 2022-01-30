@@ -13,6 +13,7 @@ for _, file in ipairs(files or {}) do
     end
 
     RoundModifiers.modifiers[name] = MODIFIER
+    MODIFIER = nil
 end
 
 -- TODO support for serverside and clientside files
@@ -20,12 +21,13 @@ for _, dir in ipairs(dir or {}) do
     local sharedFile = dir .. "/" .. "sh_init.lua" 
 
     MODIFIER = {}
-    include(file)
-    AddCSLuaFile(file)
+    include(sharedFile)
+    AddCSLuaFile(sharedFile)
     local name = dir
     if MODIFIER.name then 
         name = MODIFIER.name 
     end
 
     RoundModifiers.modifiers[name] = MODIFIER
+    MODIFIER = nil
 end
