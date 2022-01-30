@@ -17,7 +17,7 @@ for _, file in ipairs(files or {}) do
 end
 
 -- TODO support for serverside and clientside files
-for _, dir in ipairs(dir or {}) do
+for _, dir in ipairs(directories or {}) do
     local sharedFile = dir .. "/" .. "sh_init.lua" 
 
     MODIFIER = {}
